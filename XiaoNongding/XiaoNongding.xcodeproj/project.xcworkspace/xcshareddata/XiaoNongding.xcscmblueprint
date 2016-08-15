@@ -1,0 +1,25 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "bf6b394d-211c-41ee-ab29-967cea034367",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+    "bf6b394d-211c-41ee-ab29-967cea034367" : {
+
+    }
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "bf6b394d-211c-41ee-ab29-967cea034367" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "6361A52F-F633-40A5-84E8-E769EB31E2CB",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "bf6b394d-211c-41ee-ab29-967cea034367" : "xnd_ios2222222\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "XiaoNongding",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "XiaoNongding\/XiaoNongding.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "svn:\/\/116.255.142.4\/xnd_ios",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Subversion",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "bf6b394d-211c-41ee-ab29-967cea034367"
+    }
+  ]
+}

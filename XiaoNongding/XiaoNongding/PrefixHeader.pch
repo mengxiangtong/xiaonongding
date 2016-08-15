@@ -1,0 +1,174 @@
+//
+//  PrefixHeader.pch
+//  LanKe
+//
+//  Created by admin on 15/8/4.
+//  Copyright (c) 2015年 Mxt. All rights reserved.
+//
+
+#ifndef LanKe_PrefixHeader_pch
+#define LanKe_PrefixHeader_pch
+
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+#import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
+#import "AFNetworking.h"
+#import "AppDelegate.h"
+#import "SVProgressHUD.h"
+#import "XNDProgressHUD.h"
+#import "UIImageView+WebCache.h"
+#import "NSString+StringTool.h"
+#import "UIColor+Foundation.h"
+#import "LKDefine.h"
+#import "SystemInfo.h"
+#import "Tooles.h"
+#import "SO_Convert.h"
+#import "XNDEnumAggregate.h"
+#import "NSString+Additions.h"
+#import "NSString+DDPath.h"
+#import "NSString+JSMessagesView.h"
+#import "NSString+StringTool.h"
+#import "NSDictionary+JSON.h"
+#import "UIColor+Foundation.h"
+#import "UIView+Addition.h"
+#import "NSTimer+Addition.h"
+#import "UINavigationController+FDFullscreenPopGesture.h"
+#import "XNDAreaModule.h"
+#import "NSString+MD5.h"
+#import "SCGIFImageView.h"
+#import "UIXndActivityView.h"
+#import "XNDProgressHUD.h"
+
+
+/*
+ * 颜色
+ */
+#define kLightGraryColor            [UIColor colorWithRed:240/255.0 green:240/255.0 blue:240/255.0 alpha:1];
+#define kCellLineColor              [UIColor colorWithRed:188/255.0 green:186/255.0 blue:193/255.0 alpha:1]//邀请 cell线
+#define kBlackBgColor               RGBACOLOR(28, 33, 40, 1)//黑色 背景
+#define kTextPlaceHolderColor       RGBACOLOR(116, 119, 126, 1)
+#define kGroupCityCellBgColor       RGBACOLOR(237, 243, 244, 1)
+#define kRedColor                   RGBACOLOR(237, 43, 44, 1)
+#define KSearchCheckedColor         [UIColor colorWithRed:55.0/255.0 green:183.0/255.0 blue:139.0/255.0 alpha:1.0]
+#define kTableViewSectionColor      [UIColor colorWithRed:230/255.0 green:241/255.0 blue:248/255.0 alpha:1]
+#define kClassTabBgColor            [UIColor colorWithRed:38/255.0 green:38/255.0 blue:38/255.0 alpha:1]//Home  滑块 背景色
+#define KScrollViewBackGroundColor  [UIColor colorWithRed:239.0/255.0 green:239.0/255.0 blue:239.0/255.0 alpha:1.0] // scrollView 背景色
+
+
+/*
+ *屏幕宽高
+ */
+#define kBox_Weith CGRectGetWidth([UIScreen mainScreen].bounds) * 0.7
+#define kDeviceWidth [UIScreen mainScreen].bounds.size.width
+#define KDeviceHeight [UIScreen mainScreen].bounds.size.height
+#define kWith_4  (kDeviceWidth/4.0)
+#define kWith_6  (kDeviceWidth/6.0)
+#define kWith_8  (kDeviceWidth/8.0)
+#define kTodayCellH   ((kDeviceWidth -28)/2*216/325 +92)
+
+//AppDelegate
+#define kAPPALL ((AppDelegate*)[[UIApplication sharedApplication] delegate])
+#define KHTTPTimeoutInterval        10                                          //http 网络链接 超时时间
+
+
+/*
+ * URL
+ */
+#define KAppWebURL             @"http://www.xiaonongding.com/"//app回调地址
+
+
+
+#define KAppSendVerifyCode_URL       @"http://www.xiaonongding.com/api.php?g=Api&c=Index&a=sendVerifyCode"                                      //获取验证码
+#define KAppSendNewVerifyCode_URL    @"http://www.xiaonongding.com/api.php?g=Api&c=Index&a=sendNewVerifyCode"                                //获取验证码－找回密码
+
+#define kAppStoreUrlString           @"https://itunes.apple.com/us/app/lan-ke/id1037943030?l=zh&ls=1&mt=8"                                      //下载地址 的URL
+#define KHotNews_List_URL            @"http://www.xiaonongding.com/api.php?g=Api&c=Merchant&a=indexBanner"                                      //今日上新－顶部轮播&最新入驻农场
+#define KFarm_List_URL               @"http://www.xiaonongding.com/api.php?g=Api&c=Merchant&a=index&lat=%@&long=%@&p=%d&uid=%@&token=%@"           //农场推荐
+#define KHotNews_Into_URL            @"http://www.xiaonongding.com/api.php?g=Api&c=Group&a=index"                                               //今日上新－农场精品推荐
+#define KCommend_List_URL            @"http://www.xiaonongding.com/api.php?g=Api&c=Group&a=recommend&p=%d"                                      //精品推荐
+#define KOrder_List_URL              @"http://www.xiaonongding.com/api.php?g=Api&c=User&a=index&status=%@&p=%d&uid=%@&token=%@"                 //获取订单列表
+#define KCollect_GoodsList_URL       @"http://www.xiaonongding.com/api.php?g=Api&c=User&a=getCollects&type=goods&p=%d&uid=%@&token=%@"          //获取收藏商品列表
+#define KCollect_FarmList_URL        @"http://www.xiaonongding.com/api.php?g=Api&c=User&a=getCollects&type=merchant_id&p=%d&uid=%@&token=%@&lat=%@&long=%@" //获取收藏农场列表
+#define KCollect_FarmListOrder_URL   @"http://www.xiaonongding.com/api.php?g=Api&c=User&a=getCollects&type=merchant_id&p=%d&uid=%@&token=%@&lat=%@&long=%@&order=distance" //获取收藏农场列表-按距离排序
+#define KCollect_Goods_Delete_URL    @"http://www.xiaonongding.com/api.php?g=Api&c=User&a=deleteCollect&uid=%@&token=%@&collect_id=%@"          //删除收藏商品列表
+
+#define KAddress_List_URL            @"http://www.xiaonongding.com/api.php?g=Api&c=User&a=showAddress&p=%d&uid=%@&token=%@"                     //获取收货地址列表
+#define KAddress_Add_URL             @"http://www.xiaonongding.com/api.php?g=Api&c=User&a=addAddress&uid=%@&token=%@"                           //添加地址
+#define KAddress_Area_URL            @"http://www.xiaonongding.com/api.php?g=Api&c=Area&a=getProvince"                                          //获取省列表
+#define KAddress_City_URL            @"http://www.xiaonongding.com/api.php?g=Api&c=Area&a=getCity&province=%d"                                  //获取市列表
+#define KAddress_Province_URL        @"http://www.xiaonongding.com/api.php?g=Api&c=Area&a=getArea&city=%d"                                      //获取区/县列表
+#define KAddress_Circle_URL          @"http://www.xiaonongding.com/api.php?g=Api&c=Area&a=getCircle&area=%d"                                    //获取商圈列表
+#define KAddress_List_Delete_URL     @"http://www.xiaonongding.com/api.php?g=Api&c=User&a=deleteAddress&adress_id=%d&uid=%@&token=%@"           //删除地址
+
+#define KActivity_JoinActivities_URL    @"http://www.xiaonongding.com/api.php?g=Api&c=User&a=getJoinActivities&p=%d&uid=%@&token=%@&lat=%@&long=%@"       //参与的活动
+#define KActivity_JoinEndActivities_URL @"http://www.xiaonongding.com/api.php?g=Api&c=User&a=getJoinEndActivities&p=%d&uid=%@&token=%@&lat=%@&long=%@"    //已过期的活动
+#define KActivity_JoinIngActivities_URL @"http://www.xiaonongding.com/api.php?g=Api&c=User&a=getJoinIngActivities&uid=%@&token=%@&lat=%@&long=%@"         //参与的正在进行中的活动
+#define KActivity_getTypeActivity_URL   @"http://www.xiaonongding.com/api.php?g=Api&c=Activity&a=getTypeActivity&type=%@&p=%d"  //获取分类活动列表
+#define KActivity_getOtherTypeActivity_URL @"http://www.xiaonongding.com/api.php?g=Api&c=Activity&a=getOtherTypeActivity&p=%d"  //获取分类活动 更多 列表
+#define KActivity_getNewestActivity_URL @"http://www.xiaonongding.com/api.php?g=Api&c=Activity&a=getNewestActivity"             //获取最新活动
+#define KActivity_List_URL              @"http://www.xiaonongding.com/api.php?g=Api&c=Activity&a=index&p=%d"                    //活动列表
+
+
+#define KSearch_getKeywords_URL     @"http://www.xiaonongding.com/api.php?g=Api&c=Search&a=getKeywords"                                             //获取热门搜索关键字
+#define KSearch_SearchGoods_URL     @"http://www.xiaonongding.com/api.php?g=Api&c=Search&a=index&type=1&keywords=%@&lat=%@&long=%@&p=%d&uid=%@&token=%@"  //搜索商品
+#define KSearch_SearchFarms_URL     @"http://www.xiaonongding.com/api.php?g=Api&c=Search&a=index&type=2&keywords=%@&lat=%@&long=%@&p=%d&uid=%@&token=%@"  //搜索农场
+#define KPay_URL                    @"http://www.xiaonongding.com/mobile.php?g=Mobile&c=Pay&a=go_pay"//支付接口
+#define KPayWebURL                  @"http://www.xiaonongding.com/mobile.php?g=Mobile&c=Pay&a=check&order_id=%@&type=group&uid=%@&token=%@&lat=%@&long=%@"//支付界面地址
+#define KOrderConfirmURL            @"http://www.xiaonongding.com/api.php?g=Api&c=Rates&a=user_confirm&type=%@&order_id=%@&uid=%@&token=%@"//确认收货
+#define KReply_To_URL               @"http://www.xiaonongding.com/api.php?g=Api&c=Rates&a=reply_to"//去评论
+#define KgetRated                   @"http://www.xiaonongding.com/api.php?g=Api&c=Rates&a=getRated"//评论详情
+#define KUser_Regist_URL            @"http://www.xiaonongding.com/api.php?g=Api&c=Index&a=register"                                 //注册
+#define K_URL_LOGIN                 @"http://www.xiaonongding.com/api.php?g=Api&c=Index&a=login"                                    //登录地址
+#define KUser_changeAvatar_URL      @"http://www.xiaonongding.com/api.php?g=Api&c=User&a=changeAvatar"                              //修改头像
+#define KUser_changeNickname_URL    @"http://www.xiaonongding.com/api.php?g=Api&c=User&a=changeNickname"                            //修改昵称
+#define KUser_getCities_URL         @"http://www.xiaonongding.com/api.php?g=Api&c=Index&a=getCities"                                //获取城市列表
+#define KUser_forgetPwd_URL         @"http://www.xiaonongding.com/api.php?g=Api&c=Index&a=forgetPwd"                                //忘记密码
+#define KUser_getPoint_URL          @"http://www.xiaonongding.com/api.php?g=Api&c=User&a=getPoint&p=%d&uid=%@&token=%@"//获取积分列表
+#define KUser_getOrderDetail_URL    @"http://www.xiaonongding.com/api.php?g=Api&c=User&a=getOrderDetail&order_id=%@&type=%@&uid=%@&token=%@"
+
+/*
+ *  Key键
+ */
+#define KIsCollectedArray   @"kIsCollectionArray"
+#define KSettingKey         @"SettingKey"
+#define KUserInfo           @"userInfo"//用户登录信息
+#define KCitesInfo          @"CitesInfo"//城市信息（带 拼音首字母）
+#define KIsFirst            @"IsFirst"//是否第一次进入APP
+/*
+ * Cell K键
+ */
+#define KTodayTableViewCell     @"RecommendNewTableViewCell"
+#define KUINewIntoView          @"UINewIntoView"
+#define KActivityTableViewCell  @"ActivityTableViewCell"
+#define KOrderTableViewCell     @"OrderTableViewCell"
+#define kProductCell @"kProductCell"
+#define kFarmCell @"kFarmCell"
+#define KSearchFarmTableViewCell @"SearchFarmTableViewCell"
+#define KOverActiveTableViewCell @"OverActiveTableViewCell"
+#define KwalletTableViewCell     @"walletTableViewCell"
+
+/**
+ * 通知中心，通知名称
+ */
+#define KNotifictionChangeArea          @"NotifictionChangeArea"
+#define KNotifictionTodayWebReload      @"notifictionTodayWebReload"
+#define KNotifictionOrderConfirm        @"notifictionOrderConfirm"
+#define KNotifictionCloseViewController @"notifictionCloseViewController"
+#define KOrderAdressTableViewCell       @"OrderAdressTableViewCell"
+#define KOrderGoodsTableViewCell        @"OrderGoodsTableViewCell"
+#define KOrderOtherTableViewCell        @"OrderOtherTableViewCell"
+/**
+ *  支付宝 支付
+ */
+#define kalipayScheme           @"alisdkxiaonongding"
+#define kpartner                @"2088011950127192"
+#define kseller                 @"1969344724@qq.com"
+#define kprivateKey @"MIICdgIBADANBgkqhkiG9w0BAQEFAASCAmAwggJcAgEAAoGBALfYzubfdmAwoijpTTR4JfFnDPUJ7K1MtbKMpCy8C08bf9CQRigo3Mtj6hqzO+4c2Rs2+lA4zhPmeMJ4SpUC/8c8nDYmO3EYsFTg3edhyVaxqHjWLOyYh5PM1BGUkcSsepPRY924XU7c6BW4p61BfkfPKl4TBoKPxQv/whyCfoK3AgMBAAECgYASiMH7FoYpll2SwEpvQrmYh6oPvgtlQTmEIZefhumg9QXCsfjQraXsv0rnnDArhi8BBl7f3YoxCWgdOuFR+nZspMgr/aBCDnYUFT1RO8jbYINQuE1p5FoQD6tnUl0k7XxauLt9kIEa1qXZc38ag2BEQmAFlAkkAtkmFYGSee9+sQJBAOW9utgvlyo6BSd+/UjUi0NQFgcyDjQcq7dbai9iclqhZaIYcj4xhB57E9Ph4oV/qMuDz5Boeu4vaAk+ncG+uJkCQQDM3DRUHrHM+s3o+Zytbi6bxLaEMYhsF1o+BWvZt5UsGRrE7S0YWSazFcjYUDvbO6lVtJW3A4to0HXx9HFTrZfPAkEAkuCw0sPiRfngD7ctYWGZQ0ixPJpw4DowQkJsaazr5StoWbB9YWuwxvfy3jR86NKL7Mjxa6aQaTTfs4FXxGUViQJARTzvmra9FTB3Q5SJtbwVmKQFo+wx1YaXA3tFllIL4tmhSIl4wk/vWnu0ZBfKAzDI7KSaLT7PcV9zXZFmdAep1QJAGqt31nbMmCDMtC93PSmtkYriEyF+URFG5sAxqDLvWL8FogbXkA0QnwgzN4aDZTsGOIWtVNIJQaohIgsQLPnk0Q=="
+
+/**
+ *  微信 支付
+ */
+#define K_WX_APPID @"wx25d6b9689e6d7e5b"
+
+#endif
